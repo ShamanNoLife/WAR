@@ -12,9 +12,8 @@ random.shuffle(talia_kart)
 index=108
 gracz_1=talia_kart[index:]
 gracz_2=talia_kart[:index]
-print(len(gracz_1))
-
-print(len(gracz_2))
+# print(len(gracz_1))
+# print(len(gracz_2))
 
 """ Wojna """
 punkty_g1=0
