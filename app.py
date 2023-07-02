@@ -86,13 +86,11 @@ while True:
                 new_t1.remove(karta_gracza_1)
                 new_t2.remove(karta_gracza_2)
                 continue 
-    elif ((len(gracz_1)==0 and len(new_t1)==0)) or (((len(gracz_2)==0) and len(new_t2)==0)):
-        break
     else:
-        print("Erorr")
         break
+
     
-""" Wyświetlanie wyniku """
+""" Wyświetlanie """
 print("Ilość kart gracza 1:",(len(gracz_1)+len(new_t1)))
 print("Ilość kart gracza 2:",(len(gracz_2)+len(new_t2)))
 if len(gracz_2)==0 and len(new_t2)==0:
