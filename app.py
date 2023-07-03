@@ -23,69 +23,80 @@ gracz_2=talia_kart[:index]
 """ Wojna """
 new_t1=[]
 new_t2=[]
-while True:
 
-    if (len(gracz_1)!=0) and (len(gracz_2)!=0):
+while True:
+    if (len(gracz_1)!=0) and (len(gracz_2)!=0 and ((len(new_t1)==0) or (len(new_t2)==0))):
         for karta_gracza_1, karta_gracza_2 in zip(gracz_1, gracz_2):
             if karta_gracza_1>karta_gracza_2:
-                win_k=karta_gracza_2
                 gracz_1.remove(karta_gracza_1)
                 gracz_2.remove(karta_gracza_2)
+                new_t1.append(karta_gracza_1)
                 new_t1.append(karta_gracza_2)
             elif  karta_gracza_1<karta_gracza_2:
-                win_k=karta_gracza_1
                 gracz_1.remove(karta_gracza_1)
                 gracz_2.remove(karta_gracza_2)
                 new_t2.append(karta_gracza_1)
+                new_t2.append(karta_gracza_2)
             else:
                 gracz_1.remove(karta_gracza_1)
                 gracz_2.remove(karta_gracza_2)
-                continue
+            random.shuffle(new_t1)
+            random.shuffle(new_t2)
 
-    elif ((len(gracz_1)!=0) and (len(new_t2)!=0)):
+    elif (len(gracz_1)!=0) and (len(new_t2)!=0):
         for karta_gracza_1, karta_gracza_2 in zip( gracz_1, new_t2):
             if karta_gracza_1>karta_gracza_2:
                 gracz_1.remove(karta_gracza_1)
                 new_t2.remove(karta_gracza_2)
+                new_t1.append(karta_gracza_1)
                 new_t1.append(karta_gracza_2)
             elif  karta_gracza_1<karta_gracza_2:
                 gracz_1.remove(karta_gracza_1)
                 new_t2.remove(karta_gracza_2)
                 gracz_2.append(karta_gracza_1)
+                gracz_2.append(karta_gracza_2)
             else:
-                gracz_1.remove(karta_gracza_1)
-                new_t2.remove(karta_gracza_2)
-                continue
+                 gracz_1.remove(karta_gracza_1)
+                 new_t2.remove(karta_gracza_2)
+            random.shuffle(gracz_1)
+            random.shuffle(new_t2)
+            
 
-    elif ((len(gracz_2)!=0) and (len(new_t1)!=0)):
+    elif (len(gracz_2)!=0) and (len(new_t1)!=0):
         for karta_gracza_1, karta_gracza_2 in zip(new_t1,gracz_2):
             if karta_gracza_1>karta_gracza_2:
                 new_t1.remove(karta_gracza_1)
                 gracz_2.remove(karta_gracza_2)
+                gracz_1.append(karta_gracza_1)
                 gracz_1.append(karta_gracza_2)
             elif  karta_gracza_1<karta_gracza_2:
                 new_t1.remove(karta_gracza_1)
                 gracz_2.remove(karta_gracza_2)
                 new_t2.append(karta_gracza_1)
+                new_t2.append(karta_gracza_2)
             else:
                 new_t1.remove(karta_gracza_1)
                 gracz_2.remove(karta_gracza_2)
-                continue
+            random.shuffle(new_t1)
+            random.shuffle(gracz_2)
     
-    elif (len(gracz_1)==0) and (len(gracz_2)==0):   
+    elif (len(gracz_1)==0) and (len(gracz_2)==0) and ((len(new_t1)!=0) and (len(new_t2)!=0)):   
         for karta_gracza_1, karta_gracza_2 in zip( new_t1, new_t2):
             if karta_gracza_1>karta_gracza_2:
                 new_t1.remove(karta_gracza_1)
                 new_t2.remove(karta_gracza_2)
+                gracz_1.append(karta_gracza_1)
                 gracz_1.append(karta_gracza_2)
             elif  karta_gracza_1<karta_gracza_2:
                 new_t1.remove(karta_gracza_1)
                 new_t2.remove(karta_gracza_2)
                 gracz_2.append(karta_gracza_1)
+                gracz_2.append(karta_gracza_2)
             else:
-                new_t1.remove(karta_gracza_1)
-                new_t2.remove(karta_gracza_2)
-                continue 
+                 new_t1.remove(karta_gracza_1)
+                 new_t2.remove(karta_gracza_2)
+            random.shuffle(new_t1)
+            random.shuffle(new_t2)
     else:
         break
 
