@@ -104,15 +104,33 @@ class War:
         new_player_2=self.end_player_new_pack_2
         print("Number of cards for player 1: ",(len(player_1)+len(new_player_1)))
         print("Number of cards for player 2: ",(len(player_2)+len(new_player_2)))
+        score_1=(len(player_1)+len(new_player_1))
+        score_2=(len(player_2)+len(new_player_2))
+        print(score_1)
+        print(score_2)
+
         if len(player_1)!=0 and len(new_player_1)!=0 and len(player_2)==0 and len(new_player_2)==0:
             print("Player 1 won")
         elif len(player_1)==0 and len(new_player_1)==0 and len(player_2)!=0 and len(new_player_2)!=0:
             print("Player 2 won")
         elif len(player_1)==0 and len(new_player_1)==0 and len(player_2)==0 and len(new_player_2)==0:
             print("DRAW")
+    def excel(self):
+        score_1=len(self.end_player_1+self.end_player_new_pack_1)
+        score_2=len(self.end_player_2+self.end_player_new_pack_2)
+        import openpyxl
+        workbook = openpyxl.Workbook()
+        sheet = workbook.active
+        sheet["A1"]="Player 1 score" 
+        sheet["C1"]="Player 2 score" 
+        sheet["A2"]=score_1
+        sheet["C2"]=score_2
+        workbook.save('table.xlsx')
     def __init__(self,number_of_cards,player_pack):
         self.number_of_cards=number_of_cards
         self.player_pack=player_pack        
+
+
 
 print("Please enter the number of cards: ")
 number_of_cards=int(input())
@@ -122,6 +140,5 @@ game.shuffle()
 game.deal()
 game.game()
 game.display()
-
-
+game.excel()
 
