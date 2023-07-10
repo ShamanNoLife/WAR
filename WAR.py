@@ -17,86 +17,86 @@ class War:
         self.player_pack_1=player_1
         self.player_pack_2=player_2
     def game(self):
-            import random
-            player_1=self.player_pack_1
-            player_2=self.player_pack_2
-            new_player_1=[]
-            new_player_2=[]
-            while True:
-                if (len(player_1)!=0) and (len(player_2)!=0 and ((len(new_player_1)==0) or (len(new_player_2)==0))):
-                    for card_player_1, card_player_2 in zip(player_1, player_2):
-                        if card_player_1>card_player_2:
+        import random
+        player_1=self.player_pack_1
+        player_2=self.player_pack_2
+        new_player_1=[]
+        new_player_2=[]
+        while True:
+            if (len(player_1)!=0) and (len(player_2)!=0 and ((len(new_player_1)==0) or (len(new_player_2)==0))):
+                for card_player_1, card_player_2 in zip(player_1, player_2):
+                    if card_player_1>card_player_2:
                             player_1.remove(card_player_1)
                             player_2.remove(card_player_2)
                             new_player_1.append(card_player_1)
                             new_player_1.append(card_player_2)
-                        elif  card_player_1<card_player_2:
+                    elif  card_player_1<card_player_2:
                             player_1.remove(card_player_1)
                             player_2.remove(card_player_2)
                             new_player_2.append(card_player_1)
                             new_player_2.append(card_player_2)
-                        else:
+                    else:
                             player_1.remove(card_player_1)
                             player_2.remove(card_player_2)
-                        random.shuffle(new_player_1)
-                        random.shuffle(new_player_2)
-                elif (len(player_1)!=0) and (len(new_player_2)!=0):
-                    for card_player_1, card_player_2 in zip( player_1, new_player_2):
-                        if card_player_1>card_player_2:
+                    random.shuffle(new_player_1)
+                    random.shuffle(new_player_2)
+            elif (len(player_1)!=0) and (len(new_player_2)!=0):
+                for card_player_1, card_player_2 in zip( player_1, new_player_2):
+                    if card_player_1>card_player_2:
                             player_1.remove(card_player_1)
                             new_player_2.remove(card_player_2)
                             new_player_1.append(card_player_1)
                             new_player_1.append(card_player_2)
-                        elif  card_player_1<card_player_2:
+                    elif  card_player_1<card_player_2:
                             player_1.remove(card_player_1)
                             new_player_2.remove(card_player_2)
                             player_2.append(card_player_1)
                             player_2.append(card_player_2)
-                        else:
+                    else:
                             player_1.remove(card_player_1)
                             new_player_2.remove(card_player_2)
-                        random.shuffle(player_1)
-                        random.shuffle(new_player_2)           
-                elif (len(player_2)!=0) and (len(new_player_1)!=0):
-                    for card_player_1, card_player_2 in zip(new_player_1,player_2):
-                        if card_player_1>card_player_2:
+                    random.shuffle(player_1)
+                    random.shuffle(new_player_2)           
+            elif (len(player_2)!=0) and (len(new_player_1)!=0):
+                for card_player_1, card_player_2 in zip(new_player_1,player_2):
+                    if card_player_1>card_player_2:
                             new_player_1.remove(card_player_1)
                             player_2.remove(card_player_2)
                             player_1.append(card_player_1)
                             player_1.append(card_player_2)
-                        elif  card_player_1<card_player_2:
+                    elif  card_player_1<card_player_2:
                             new_player_1.remove(card_player_1)
                             player_2.remove(card_player_2)
                             new_player_2.append(card_player_1)
                             new_player_2.append(card_player_2)
-                        else:
+                    else:
                             new_player_1.remove(card_player_1)
                             player_2.remove(card_player_2)
-                        random.shuffle(new_player_1)
-                        random.shuffle(player_2)            
-                elif (len(player_1)==0) and (len(player_2)==0) and ((len(new_player_1)!=0) and (len(new_player_2)!=0)):   
-                    for card_player_1, card_player_2 in zip( new_player_1, new_player_2):
-                        if card_player_1>card_player_2:
+                    random.shuffle(new_player_1)
+                    random.shuffle(player_2)            
+            elif (len(player_1)==0) and (len(player_2)==0) and ((len(new_player_1)!=0) and (len(new_player_2)!=0)):   
+                for card_player_1, card_player_2 in zip( new_player_1, new_player_2):
+                    if card_player_1>card_player_2:
                             new_player_1.remove(card_player_1)
                             new_player_2.remove(card_player_2)
                             player_1.append(card_player_1)
                             player_1.append(card_player_2)
-                        elif  card_player_1<card_player_2:
+                    elif  card_player_1<card_player_2:
                             new_player_1.remove(card_player_1)
                             new_player_2.remove(card_player_2)
                             player_2.append(card_player_1)
                             player_2.append(card_player_2)
-                        else:
+                    else:
                             new_player_1.remove(card_player_1)
                             new_player_2.remove(card_player_2)
-                        random.shuffle(new_player_1)
-                        random.shuffle(new_player_2)
-                else:
-                    break
-            self.end_player_1=player_1
-            self.end_player_2=player_2
-            self.end_player_new_pack_1=new_player_1
-            self.end_player_new_pack_2=new_player_2
+                    random.shuffle(new_player_1)
+                    random.shuffle(new_player_2)
+            else:
+                break
+        self.end_player_1=player_1
+        self.end_player_2=player_2
+        self.end_player_new_pack_1=new_player_1
+        self.end_player_new_pack_2=new_player_2
     def display(self):
         player_1=self.end_player_1
         player_2=self.end_player_2
@@ -116,24 +116,33 @@ class War:
         elif len(player_1)==0 and len(new_player_1)==0 and len(player_2)==0 and len(new_player_2)==0:
             print("DRAW")
     def excel(self):
-        score_1=len(self.end_player_1+self.end_player_new_pack_1)
-        score_2=len(self.end_player_2+self.end_player_new_pack_2)
-        number_of_games=self.number_of_games
         import openpyxl
         workbook = openpyxl.load_workbook('table.xlsx')
         sheet = workbook.active
+        score_1=len(self.end_player_1+self.end_player_new_pack_1)
+        score_2=len(self.end_player_2+self.end_player_new_pack_2)
         sheet["A1"]="Player 1 score" 
         sheet["B1"]="Player 2 score"
-        for i in range(int(number_of_games/2)):
-          points_1=score_1
-          points_2=score_2
-          data=[points_1,points_2]
-          sheet.append(data)
-          workbook.save('table.xlsx')
+        points_1=score_1
+        points_2=score_2
+        data=[points_1,points_2]
+        sheet.append(data)
+        workbook.save('table.xlsx')
+    def clear(self):
+        import openpyxl
+        workbook = openpyxl.load_workbook('table.xlsx')
+        sheet = workbook.active
+        for i in range(self.number_of_games):
+            column_index = i
+            for row in sheet.iter_rows(min_row=2, min_col=column_index, max_col=column_index):
+                for cell in row:
+                    cell.value = None
+        workbook.save('table.xlsx')
+
     def __init__(self,number_of_cards,player_pack,number_of_games):
         self.number_of_cards=number_of_cards
-        self.player_pack=player_pack
-        self.number_of_games=number_of_games                
+        self.player_pack=player_pack                
+        self.number_of_games=number_of_games               
 
 
 
