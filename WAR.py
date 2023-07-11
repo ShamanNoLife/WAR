@@ -7,6 +7,9 @@ class War:
                     pack.append(card+1)  
         self.pack_after_shuffle=pack
         return(pack)
+    def create_player(self):
+        pass
+        
     def deal(self):
         pack=self.pack_after_shuffle
         index=self.player_pack
@@ -98,21 +101,23 @@ class War:
         self.end_player_new_pack_1=new_player_1
         self.end_player_new_pack_2=new_player_2
     def display(self):
+        wins_1=0
+        wins_2=0
         player_1=self.end_player_1
         player_2=self.end_player_2
         new_player_1=self.end_player_new_pack_1
         new_player_2=self.end_player_new_pack_2
         print("Number of cards for player 1: ",(len(player_1)+len(new_player_1)))
         print("Number of cards for player 2: ",(len(player_2)+len(new_player_2)))
-        # score_1=(len(player_1)+len(new_player_1))
-        # score_2=(len(player_2)+len(new_player_2))
-        # print(score_1)
-        # print(score_2)
 
         if len(player_1)!=0 and len(new_player_1)!=0 and len(player_2)==0 and len(new_player_2)==0:
             print("Player 1 won")
+
+            return wins_1
         elif len(player_1)==0 and len(new_player_1)==0 and len(player_2)!=0 and len(new_player_2)!=0:
             print("Player 2 won")
+ 
+            return wins_2
         elif len(player_1)==0 and len(new_player_1)==0 and len(player_2)==0 and len(new_player_2)==0:
             print("DRAW")
     def excel(self):
@@ -139,10 +144,10 @@ class War:
                     cell.value = None
         workbook.save('table.xlsx')
 
-    def __init__(self,number_of_cards,player_pack,number_of_games):
+    def __init__(self,number_of_cards,player_pack,list_of_names):
         self.number_of_cards=number_of_cards
         self.player_pack=player_pack                
-        self.number_of_games=number_of_games               
+        self.list_of_names=list_of_names              
 
 
 
