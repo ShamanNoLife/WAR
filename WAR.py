@@ -5,22 +5,51 @@ class War:
         self.number_of_players=number_of_players 
     def shuffle(self):
         number_of_cards=self.number_of_cards
+        because_card_equal_0_dont_exist=1
+        number_of_colors=4
         pack=[]
         for card in range(number_of_cards):
-            for card_suit in range(4):
-                    pack.append(card+1)  
+            for card_suit in range(number_of_colors):
+                    pack.append(card+because_card_equal_0_dont_exist)  
         self.pack_after_shuffle=pack
         return(pack)   
-    def deal(self):
+    def check_how_many_players(self):
+         check_number_of_players=self.number_of_players
+         if(check_number_of_players==1):
+                return 1
+         elif(check_number_of_players==2):
+                return 2
+         elif(check_number_of_players==3):
+                return 3
+         elif(check_number_of_players==4):
+                return 4
+         elif(check_number_of_players==5):
+                return 5
+         elif(check_number_of_players==6):
+                return 6
+    def deal(self,how_many_players):
         pack=self.pack_after_shuffle
-        index=self.player_pack
+        index=self.player_pack/self.number_of_players
         import random
         random.shuffle(pack)
-        player_1=pack[index:]
-        player_2=pack[:index]
-        self.player_pack_1=player_1
-        self.player_pack_2=player_2
-        pass
+        if(how_many_players==2):   
+                player_1=pack[index:]
+                player_2=pack[:index]
+                self.player_pack_1=player_1
+                self.player_pack_2=player_2
+        elif(how_many_players==3):
+                player_1=pack[:]
+                player_2=pack[:]
+                player_3=pack[:]
+                self.player_pack_1=player_1
+                self.player_pack_2=player_2
+                self.player_pack_3=player_3
+        elif(how_many_players==4):
+                pass
+        elif(how_many_players==5):
+                pass
+        elif(how_many_players==6):
+                pass
     def game_two_players(self):
         import random
         player_1=self.player_pack_1

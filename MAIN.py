@@ -7,7 +7,8 @@ while True:
     number_of_games=int(input("Enter the numbers of games: "))
     number_of_players=int(input("Enter the numbers of players: "))  
     number_of_cards=int(input("Please enter the number of cards: "))
-    players=PLAYER_BASE(number_of_players,number_of_games,number_of_cards)
+    number_of_copies_of_cards=int(input("Please enter the number of copies of cards: "))
+    players=PLAYER_BASE(number_of_players,number_of_games,number_of_cards,number_of_copies_of_cards)
     while number_of_players>0:
         name = input("Enter player name: ")
         players.add_player(name)
@@ -16,7 +17,7 @@ while True:
     while number_of_games>0:
             game.shuffle()
             game.deal()
-            game.game()
+            game.game_two_players()
             game.display()
             game.excel()
             number_of_games-=1
